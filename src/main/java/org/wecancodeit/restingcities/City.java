@@ -17,7 +17,8 @@ public class City {
 	private String name;
 	private int population;
 
-	public City() {
+	@SuppressWarnings("unused")
+	private City() {
 	}
 
 	public City(State state, String name, int population) {

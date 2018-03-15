@@ -26,7 +26,8 @@ public class State {
 	@OneToMany(mappedBy = "state")
 	private Collection<City> cities;
 
-	public State() {
+	@SuppressWarnings("unused")
+	private State() {
 	}
 
 	public State(String name, String abbreviation, String motto, String fish, String citiesUrl, City... cities) {
@@ -36,6 +37,34 @@ public class State {
 		this.fish = fish;
 		this.citiesUrl = citiesUrl;
 		this.cities = Arrays.asList(cities);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getAbbreviation() {
+		return abbreviation;
+	}
+
+	public String getMotto() {
+		return motto;
+	}
+
+	public String getFish() {
+		return fish;
+	}
+
+	public String getCitiesUrl() {
+		return citiesUrl;
+	}
+
+	public Collection<City> getCities() {
+		return cities;
 	}
 
 }
