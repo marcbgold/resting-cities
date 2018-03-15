@@ -1,5 +1,6 @@
 package org.wecancodeit.restingcities;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -68,85 +69,18 @@ public class RestingCitiesJpaMappingsTest {
 		assertThat(firstCity.getName(), is("first"));
 	}
 
-	// @Test
-	// public void shouldEstablishManyReviewsToOneCategoryRelationship() {
-	// category = categoryRepo.save(category);
-	// long categoryId = category.getId();
-	//
-	// firstReview = reviewRepo.save(firstReview);
-	// secondReview = reviewRepo.save(secondReview);
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// category = categoryRepo.findOne(categoryId);
-	// assertThat(category.getReviews(), containsInAnyOrder(firstReview,
-	// secondReview));
-	// }
-	//
-	// @Test
-	// public void shouldSaveAndLoadTag() {
-	// Tag underTest = tagRepo.save(new Tag("name", "description"));
-	// long TagId = underTest.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// underTest = tagRepo.findOne(TagId);
-	// assertThat(underTest.getName(), is("name"));
-	// }
-	//
-	// @Test
-	// public void shouldEstablishManyTagsToOneReviewRelationship() {
-	// category = categoryRepo.save(category);
-	// firstTag = tagRepo.save(new Tag("first", DESC));
-	// secondTag = tagRepo.save(new Tag("second", DESC));
-	// Review underTest = reviewRepo.save(new Review(category, "test", REV_DATE,
-	// YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, firstTag,
-	// secondTag));
-	// long reviewId = underTest.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// underTest = reviewRepo.findOne(reviewId);
-	// assertThat(underTest.getTags(), containsInAnyOrder(firstTag, secondTag));
-	// }
-	//
-	// @Test
-	// public void shouldEstablishManyReviewsToOneTagRelationship() {
-	// category = categoryRepo.save(category);
-	// Tag underTest = tagRepo.save(new Tag("test", DESC));
-	// firstReview = reviewRepo.save(new Review(category, "first review", REV_DATE,
-	// YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, underTest));
-	// secondReview = reviewRepo.save(new Review(category, "second review",
-	// REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3,
-	// underTest));
-	// long tagId = underTest.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// underTest = tagRepo.findOne(tagId);
-	// assertThat(underTest.getReviews(), containsInAnyOrder(firstReview,
-	// secondReview));
-	// }
-	//
-	// @Test
-	// public void shouldGetTagSize() {
-	// category = categoryRepo.save(category);
-	// Tag underTest = tagRepo.save(new Tag("test", DESC));
-	// firstReview = reviewRepo.save(new Review(category, "first review", REV_DATE,
-	// YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3, underTest));
-	// secondReview = reviewRepo.save(new Review(category, "second review",
-	// REV_DATE, YEAR_PUB, DESC, IMG_URL, HAIKU_LINE1, HAIKU_LINE2, HAIKU_LINE3,
-	// underTest));
-	// long tagId = underTest.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// underTest = tagRepo.findOne(tagId);
-	// assertThat(underTest.getTagSize(), is("medium-tag"));
-	// }
+	@Test
+	public void shouldEstablishManyCitiesToOneStateRelationship() {
+		state = stateRepo.save(state);
+		long stateId = state.getId();
+
+		firstCity = cityRepo.save(firstCity);
+		secondCity = cityRepo.save(secondCity);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		state = stateRepo.findOne(stateId);
+		assertThat(state.getCities(), containsInAnyOrder(firstCity, secondCity));
+	}
 }
