@@ -15,9 +15,14 @@ xhr.onreadystatechange = function() {
 			const motto = document.createElement('li');
 			motto.innerText = `Motto: ${state.motto}`;
 			const fish = document.createElement('li');
-			fish.innerText = `State Fish: ${state.fish}`;
+			if (state.fish) {
+				fish.innerText = `State Fish: ${state.fish.name}`;
+			} else {
+				fish.innerText = 'State Fish: none';
+			}
 			const citiesUrl = document.createElement('li');
-			citiesUrl.innerText = `Cities URL: ${state.citiesUrl}`;
+			// const citiesLink = document.createElement('a');
+			citiesUrl.innerHTML = `Cities URL: <a href="${state.citiesUrl}">${state.citiesUrl}</a>`;
 
 			detailsList.appendChild(abbr);
 			detailsList.appendChild(motto);

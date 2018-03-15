@@ -1,8 +1,8 @@
 package org.wecancodeit.restingcities;
 
-import java.util.Arrays;
 import java.util.Collection;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,11 +15,14 @@ public class State {
 
 	@Id
 	@GeneratedValue
+	@JsonIgnore
 	private Long id;
 	private String name;
 	private String abbreviation;
 	private String motto;
-	private String fish;
+
+	@Embedded
+	private Fish fish;
 	private String citiesUrl;
 
 	@JsonIgnore
@@ -30,13 +33,12 @@ public class State {
 	private State() {
 	}
 
-	public State(String name, String abbreviation, String motto, String fish, String citiesUrl, City... cities) {
+	public State(String name, String abbreviation, String motto, Fish fish, String citiesUrl) {
 		this.name = name;
 		this.abbreviation = abbreviation;
 		this.motto = motto;
 		this.fish = fish;
 		this.citiesUrl = citiesUrl;
-		this.cities = Arrays.asList(cities);
 	}
 
 	public Long getId() {
@@ -55,7 +57,7 @@ public class State {
 		return motto;
 	}
 
-	public String getFish() {
+	public Fish getFish() {
 		return fish;
 	}
 

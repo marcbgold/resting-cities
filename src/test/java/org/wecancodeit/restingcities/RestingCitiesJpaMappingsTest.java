@@ -29,17 +29,18 @@ public class RestingCitiesJpaMappingsTest {
 	private static final String NAME = "name";
 	private static final String ABBR = "AB";
 	private static final String MOTTO = "motto";
-	private static final String FISH = "fish";
 	private static final String CITIES_URL = "url";
 	private static final int POP = 1000;
 
 	State state;
 	City firstCity;
 	City secondCity;
+	Fish fish;
 
 	@Before
 	public void setup() {
-		state = new State(NAME, ABBR, MOTTO, FISH, CITIES_URL);
+		fish = new Fish(NAME, "fishus fishus", "image url");
+		state = new State(NAME, ABBR, MOTTO, fish, CITIES_URL);
 		firstCity = new City(state, "first", POP);
 		secondCity = new City(state, "first", POP);
 	}
