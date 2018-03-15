@@ -3,8 +3,9 @@ package org.wecancodeit.restingcities;
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class RestingCitiesPopulator implements CommandLineRunner {
 
 	@Resource

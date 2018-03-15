@@ -1,9 +1,85 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<title>State Info</title>
+<title>A List of States</title>
 </head>
+
 <body>
+	<!-- <header>
+		<h1>A List of States</h1>
+	</header>
+
+	<div th:each="state: ${states}">
+		<h2>
+			<a th:href="@{/course(id=${course.id})}" th:text="${course.name}"></a>
+		</h2>
+	</div>
+	
+ 	<form method="GET">
+		<div>
+			<button th:formaction="@{/show-courses}">Sort By Course Name</button>
+			<button th:formaction="@{/show-courses-by-id}">Sort By Course ID</button>
+		</div>
+	</form>
+	
+	<h2>Find Course By Instructor</h2>
+	<div>
+		<form method="POST">
+		<label>Select Instructor:</label>
+			<select name="instructorId">
+				<option value="0" th:text="|Select Instructor|" />
+				<option th:each="instructor: ${instructors}" th:value="${instructor.id}" th:text="${instructor.name}" />
+			</select>
+			<div>
+				<button th:formaction="@{/instructor}">Submit</button>
+			</div>
+		</form>
+	</div>
+
+	<h2>Add Course</h2>
+	<div>
+		<form method="POST">
+			<div>
+				<label>Enter Course Name:</label>
+				<input type="text" name="name" />
+			</div>
+			<div>
+				<label>Enter Course Description:</label>
+				<input type="text" name="description" />
+			</div>
+			<div>
+				<label>Select Instructor:</label>
+				<select name="instructor">
+					<option value="0" th:text="|Select Instructor|" />
+					<option th:each="instructor: ${instructors}" th:value="${instructor.id}" th:text="${instructor.name}" />
+				</select>
+			</div>	
+			<div>
+				<button th:formaction="@{/add-course}">Submit</button>
+			</div>
+		</form>
+	</div>
+	
+	
+ 	<div>
+ 		<h2>Remove Course</h2>
+		<form method="POST">
+			<div>
+				<label>Select Course:</label>
+				<select name="id">
+					<option value="0" th:text="|Select Course|" />
+					<option th:each="course: ${courses}" th:value="${course.id}" th:text="${course.name}" />
+				</select>
+			</div>
+				
+			<div>
+				<button value="${course.id}" th:formaction="@{/delete-course}">Submit</button>
+			</div>
+		</form>
+	</div> -->
+
 
 </body>
 </html>
