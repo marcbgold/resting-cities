@@ -2,6 +2,7 @@ package org.wecancodeit.restingcities;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,11 @@ public class RestingCitiesController {
 	@RequestMapping("/states")
 	public Iterable<State> findAllStates() {
 		return stateRepo.findAll();
+	}
+
+	@RequestMapping("/states/{abbreviation}")
+	public State findOneState(@PathVariable String abbreviation) {
+		return stateRepo.findByAbbreviationIgnoreCase(abbreviation);
 	}
 
 	// @RequestMapping("/show-courses")

@@ -2,43 +2,33 @@ const xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function() {
 	if (this.readyState === 4 && this.status === 200) {
 		const res = JSON.parse(xhr.response);
-
-		console.log(res)
-		const body = document.body;
+		const container = document.querySelector('.container')
 
 		res.forEach(function(state) {
-			const list = document.createElement('ul');
-			const name = document.createElement('li');
+			const eachState = document.createElement('div');
+			const detailsList = document.createElement('ul');
+
+			const name = document.createElement('h2');
 			name.innerText = state.name;
 			const abbr = document.createElement('li');
-			abbr.innerText = state.abbreviation;
-			list.appendChild(name);
-			list.appendChild(abbr);
-			body.appendChild.list;
+			abbr.innerText = `Abbreviation: ${state.abbreviation}`;
+			const motto = document.createElement('li');
+			motto.innerText = `Motto: ${state.motto}`;
+			const fish = document.createElement('li');
+			fish.innerText = `State Fish: ${state.fish}`;
+			const citiesUrl = document.createElement('li');
+			citiesUrl.innerText = `Cities URL: ${state.citiesUrl}`;
+
+			detailsList.appendChild(abbr);
+			detailsList.appendChild(motto);
+			detailsList.appendChild(fish);
+			detailsList.appendChild(citiesUrl);
+
+			eachState.appendChild(name);
+			eachState.appendChild(detailsList);
+
+			container.appendChild(eachState);
 		})
-
-		// const courseContainer = document.createElement('div')
-		// courseContainer.classList.add('courseContainer')
-
-		// const courseTitle = createElement('h2', res[0].name)
-		// const courseDescription = createElement('p', res[0].description)
-		// const courseInstructor = createElement('h3', res[0].instructor.name)
-
-		// appendElement(courseContainer, courseTitle)
-		// appendElement(courseContainer, courseDescription)
-		// appendElement(courseContainer, courseInstructor)
-
-		// appendElement(body, courseContainer)
-
-		// function createElement(elem, textValue) {
-		// 	const newElem = document.createElement(elem)
-		// 	newElem.innerText = textValue
-		// 	return newElem
-		// }
-
-		// function appendElement(parent, child) {
-		// 	parent.appendChild(child)
-		// }
 	}
 }
 
